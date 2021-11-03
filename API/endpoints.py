@@ -34,6 +34,8 @@ class ListRooms(Resource):
     """
     This endpoint returns a list of all rooms.
     """
+    @api.response(HTTPStatus.OK, 'Success')
+    @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
     def get(self):
         """
         Returns a list of all chat rooms.

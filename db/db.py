@@ -19,4 +19,6 @@ def get_rooms():
         with open(ROOMS_DB) as file:
             return json.loads(file.read())
     except FileNotFoundError:
+        print("in get_rooms")
+        print(ROOMS_DB)
         return None
