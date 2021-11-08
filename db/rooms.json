@@ -1,4 +1,15 @@
 {
-    "Software Engineering": {"num_users": 17},
-    "AI": {"num_users": 27, "descr": "Discuss AI"}
+    "Software Engineering": {
+        "num_users": 17
+    },
+    "AI": {
+        "num_users": 27,
+        "descr": "Discuss AI"
+    },
+    "new room56034338838": {
+        "num_users": 0
+    },
+    "new room17631161160": {
+        "num_users": 0
+    }
 }

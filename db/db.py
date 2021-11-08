@@ -14,12 +14,14 @@ OK = 0
 NOT_FOUND = 1
 DUPLICATE = 2
 
+
 def write_rooms(rooms):
     """
     A function to write to rooms.json
     """
     with open(ROOMS_DB, 'w') as f:
         json.dump(rooms, f, indent=4)
+
 
 def get_rooms():
     """
@@ -31,6 +33,7 @@ def get_rooms():
     except FileNotFoundError:
         print("Rooms db not found")
         return None
+
 
 def add_room(roomname):
     """
@@ -47,5 +50,3 @@ def add_room(roomname):
         rooms[roomname] = {"num_users": 0}
         write_rooms(rooms)
         return OK
-
-
