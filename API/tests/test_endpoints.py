@@ -4,8 +4,19 @@ This file holds the tests for endpoints.py.
 
 from unittest import TestCase, skip 
 from flask_restx import Resource, Api
+import random
 
 import API.endpoints as ep
+import db.db as db
+
+HUGE_NUM = 100000000000 # any big number will do!
+
+def new_room_name():
+    """
+    Randomly create roomname for test.
+    """
+    int_name = random.randint(0,HUGE_NUM)
+    return "new room" + str(int_name)
 
 
 class EndpointTestCase(TestCase):
@@ -21,6 +32,16 @@ class EndpointTestCase(TestCase):
         self.assertIsInstance(ret, dict)
         self.assertIn(ep.HELLO, ret)
     
+    def test_create_room(self):
+        """
+        Post-condition 1: return is a dictionary.
+        """
+        cr = ep.CreateRoom(Resource)
+        new_room = new_room_name()
+        ret = cr.post(new_room)
+        rooms = db.get_rooms()
+        self.assertIn(new_room, rooms)
+        
     def test_list_rooms1(self):
         """
         Post-condition 1: return is a dictionary.
@@ -47,3 +68,5 @@ class EndpointTestCase(TestCase):
         ret = lr.get()
         for val in ret.values():
             self.assertIsInstance(val,dict)
+    
+    
