@@ -12,7 +12,7 @@ TEST_MODE = os.environ.get("TEST_MODE", 0)
 DB_DIR = f"{DEMO_HOME}/db"
 
 if TEST_MODE:
-    ROOMS_DB = f"{DB_DIR}/test/rooms.json"
+    ROOMS_DB = f"{DB_DIR}/test_rooms.json"
 else:
     ROOMS_DB = f"{DB_DIR}/db/rooms.json"
 
