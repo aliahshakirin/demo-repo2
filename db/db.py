@@ -12,9 +12,11 @@ TEST_MODE = os.environ.get("TEST_MODE", 0)
 DB_DIR = f"{DEMO_HOME}/db"
 
 if TEST_MODE:
-    ROOMS_DB = f"{DB_DIR}/test_rooms.json"
+    DB_DIR = f"{DEMO_HOME}/db/test_dbs"
 else:
-    ROOMS_DB = f"{DB_DIR}/db/rooms.json"
+    DB_DIR = f"{DEMO_HOME}/db"
+
+ROOMS_DB = f"{DB_DIR}/rooms.json"
 
 OK = 0
 NOT_FOUND = 1
@@ -55,3 +57,27 @@ def add_room(roomname):
         rooms[roomname] = {"num_users": 0}
         write_rooms(rooms)
         return OK
+
+
+def get_users():
+    return{"Fred": {}}
+
+
+def write_users():
+    pass
+
+
+def add_user(username):
+    """
+    Add a user to the user database.
+    Until we are using a real DB, we have a potential race condition here.
+    """
+    users = get_users()
+    if users is None:
+        return NOT_FOUND
+    elif username in users:
+        return DUPLICATE
+    else:
+        users[username] = {"num users": 0}
+        write_users(users)
+        return
