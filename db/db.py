@@ -22,6 +22,7 @@ OK = 0
 NOT_FOUND = 1
 DUPLICATE = 2
 
+
 def write_rooms(rooms):
     """
     Write out the in-memory room list in proper db format.
