@@ -93,7 +93,7 @@ class ListUsers(Resource):
         """
         Returns a list of all users.
         """
-        users = db.get_users
+        users = db.get_users()
         if users is None:
             raise (wz.NotFound("User db not found."))
         else:
