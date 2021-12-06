@@ -5,5 +5,8 @@
     "AI": {
         "num_users": 27,
         "descr": "Discuss AI"
+    },
+    "SE": {
+        "num_users": 0
     }
 }
