@@ -13,7 +13,8 @@ It assumes that cause that's what we've been using!
 """
 import sys
 import json
-import pymongo as pm
+
+import db_connect as dbc
 
 
 def read_collection(json_version):
@@ -33,7 +34,7 @@ def new_ent_from_json(key_name, ent_name, ent_data):
     return {**dict1, **ent_data}
 
 
-client = pm.MongoClient()
+client = dbc.get_client()
 print(client)
 
 if len(sys.argv) < 4:
