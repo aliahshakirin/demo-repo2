@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
     # Runs a set of commands using the runners shell
+      - name: Install requirements
+        run: pip install -r requirements-dev.txt
       - name: Run tests
         run: make all_tests
       - name: Deploy to Heroku
