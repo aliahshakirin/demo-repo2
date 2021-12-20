@@ -34,7 +34,8 @@ def get_client():
         client = pm.MongoClient()
     else:
         print("Connecting to Mongo remotely.")
-        client = pm.MongoClient()
+        client = pm.MongoClient("mongodb+srv://aliahjefree:VNOAxCoN35OhdcE4\
+@cluster0.bslxs.mongodb.net/chatDB?retryWrites=true&w=majority")
     return client
 
 
@@ -55,7 +56,6 @@ def del_one(collect_nm, filters={}):
 def fetch_all(collect_nm, key_nm):
     all_docs = {}
     for doc in client[db_nm][collect_nm].find():
-        print(doc)
         all_docs[doc[key_nm]] = json.loads(bsutil.dumps(doc))
     return all_docs
 
