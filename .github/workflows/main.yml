@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DEMO_HOME: /home/runner/work/demo-repo2/demo-repo2
+      MONGO_PASSWD: ${{secrets.MONGO_PASSWD}}
     steps:
       - uses: actions/checkout@v2
     # Runs a set of commands using the runners shell
