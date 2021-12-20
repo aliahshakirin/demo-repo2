@@ -8,13 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      DEMO_HOME: /home/runner/work/demo-repo2/demo-repo2
     steps:
       - uses: actions/checkout@v2
     # Runs a set of commands using the runners shell
-      - name: Setting env variables
-        run: |
-          DEMO_HOME = /home/runner/work/demo-repo2/demo-repo2
-
       - name: Install requirements
         run: pip install -r requirements-dev.txt
 
