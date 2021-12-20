@@ -5,15 +5,20 @@ import os
 import json
 import pymongo as pm
 import bson.json_util as bsutil
-from pymongo.server_api import ServerApi
 
 # all of these will eventually be put in the env:
 user_nm = "aliahjefree"
 cloud_db = "@cluster0.bslxs.mongodb.net"
 passwd = os.environ.get("MONGO_PASSWD", '')
-cloud_mdb = "mongodb+srv"
+cloud_svc = "mongodb+srv"
 db_params = "retryWrites=true&w=majority"
 db_nm = "chatDB"
+
+if os.environ.get("TEST_MODE", ''):
+    db_nm = "test_chatDB"
+
+REMOTE = 0
+LOCAL = 1
 
 client = None
 
@@ -28,8 +33,23 @@ def get_client():
     if os.environ.get("LOCAL_MONGO", False):
         client = pm.MongoClient()
     else:
+        print("Connecting to Mongo remotely.")
         client = pm.MongoClient()
     return client
+
+
+def fetch_one(collect_nm, filters={}):
+    """
+    Fetch one record that meets filters.
+    """
+    return client[db_nm][collect_nm].find_one(filters)
+
+
+def del_one(collect_nm, filters={}):
+    """
+    Delete one record that meets filters.
+    """
+    return client[db_nm][collect_nm].delete_one(filters)
 
 
 def fetch_all(collect_nm, key_nm):
