@@ -1,5 +1,7 @@
 # Chatbot server
 
+Sample chatbot server for software engineering class demonstration
+
 ## Requirements
 
 - List chat rooms
